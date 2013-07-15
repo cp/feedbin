@@ -1,4 +1,5 @@
-# Feedbin
+Feedbin [![Build Status](https://travis-ci.org/ColbyAley/feedbin.png?branch=master)](https://travis-ci.org/ColbyAley/feedbin)
+===
 
 A simple Ruby wrapper for v2 of the [Feedbin.me](http://feedbin.me) REST [API](https://github.com/feedbin/feedbin-api). Includes functionality for retrieving entries and subscribing to feeds.
 
