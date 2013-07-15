@@ -2,5 +2,8 @@ language: ruby
 rvm:
   - 2.0.0
 
-secure: "Wk4GFQdOs3OgvImt1Vjtmld8E6POF9FqChX/XxZrQ9ffbkdnktmUx4Ut8wG9\n87WdxwNKSdpgZToe3uEseXsIF8k/9rn3t/J94DZFKrhc5oH7MPpy2ldJ16Zk\nQLc5TT/N9GE09rb3KCiSvwCXuNyfN84DNesttDp31xLDl2l5u+8="
-secure: "k0fAtfp+ks4Ada8oBOkdzsmM/FebdZu8Xb/U5rwOy80wo7X9vTWhGESgxtt3\nyb36ckUy1WkBUEsHGSJTeqbPe5u+W/SooQPK0tJfjptlSlq9aOY9EpskISJL\ntRC2/kpF3SiCHy6utqT05OeolFhswWAHsQlXVcs4kyQzxNW+cjI="
+ env:
+  global:
+    - email: "colby@aley.me"
+	- secure: "nhGFDuw8xXY/45O8vODvjpY02mGcUWbITYk6yfRxWJCCJJvX9PcjPM/l7g9I\naLabXfz+2o48Kls3e071ja/yKIHPecSVboegutJsYvRKet5bk3NvS1GBVzPj\nFLdsR+u25A/L9hBB4zjX4mCi62atDNfguyiYPFliD+mBMjW6J08="
+
