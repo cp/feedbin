@@ -22,7 +22,7 @@ Or install it yourself as:
 ## Usage
 
 ### Examples
-    @feedbin = Feedbin::API.new('colby@aley.me','pa$$w0rd')
+    @feedbin = FeedbinAPI.new('colby@aley.me','pa$$w0rd')
 
     @feedbin.entries
     # => (array of entry hashes)
@@ -52,7 +52,7 @@ Or install it yourself as:
     require 'sinatra'
     require 'feedbin'
 
-    @@feedbin = Feedbin::API.new('colby@aley.me','pa$$w0rd')
+    @@feedbin = FeedbinAPI.new('colby@aley.me','pa$$w0rd')
 
     get '/' do
       @@feedbin.entries
@@ -66,7 +66,6 @@ Or install it yourself as:
 
 ## Todo
 - Move away from HTTParty because of it's massive overhead.
-- Ensure that tests do not mess with tester's Feedbin account.
 
 ## Testing
 
