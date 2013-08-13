@@ -1,8 +1,3 @@
 language: ruby
 rvm:
-  - 2.0.0
-env:
-  global:
-    - EMAIL="colby@aley.me"
-    - secure: "nhGFDuw8xXY/45O8vODvjpY02mGcUWbITYk6yfRxWJCCJJvX9PcjPM/l7g9I\naLabXfz+2o48Kls3e071ja/yKIHPecSVboegutJsYvRKet5bk3NvS1GBVzPj\nFLdsR+u25A/L9hBB4zjX4mCi62atDNfguyiYPFliD+mBMjW6J08="
-
+  - 1.9.3

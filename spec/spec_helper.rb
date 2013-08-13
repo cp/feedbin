@@ -4,6 +4,9 @@ require 'webmock/rspec'
 
 require 'feedbin'
 
+ENV['EMAIL'] ||= 'email@email.com'
+ENV['PASSWORD'] ||= 'pa$$word'
+
 RSpec.configure do |c|
-  c.include(WebMock)
+  c.include(WebMock::API)
 end

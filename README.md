@@ -52,14 +52,14 @@ Or install it yourself as:
     require 'sinatra'
     require 'feedbin'
 
-    @@feedbin = FeedbinAPI.new('colby@aley.me','pa$$w0rd')
+    FEEDBIN = FeedbinAPI.new('colby@aley.me','pa$$w0rd')
 
     get '/' do
-      @@feedbin.entries
+      FEEDBIN.entries
     end
 
     get '/subscribe/:url' do
-      @@feedbin.subscribe(url.to_s)
+      FEEDBIN.subscribe(url.to_s)
     end
 
 ...you get the picture.
@@ -69,9 +69,7 @@ Or install it yourself as:
 
 ## Testing
 
-Rspec is used for tests. You will need to pass in your Feedbin email and password to run the tests.
-
-  `$ EMAIL=email@me.com PASSWORD=pa$$w0rd rspec`
+Rspec is used for tests. WebMock is used to avoid touching the live Feedbin API.
 
 Please add tests when contrinuting, and make sure that they all pass before submitting a PR.
 
