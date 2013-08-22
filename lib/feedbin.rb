@@ -8,8 +8,10 @@ class FeedbinAPI
     @email, @password = email, password
   end
 
-  def entries
-    HTTParty.get("https://api.feedbin.me/v2/entries.json", basic_auth: { username: @email, password: @password })
+  # Entries
+
+  def entries(options = {})
+    HTTParty.get("https://api.feedbin.me/v2/entries.json", query: options, basic_auth: { username: @email, password: @password })
   end
 
   def entry(id)
@@ -20,19 +22,35 @@ class FeedbinAPI
     HTTParty.get("https://api.feedbin.me/v2/unread_entries.json", basic_auth: { username: @email, password: @password })
   end
 
+  def star(id)
+    HTTParty.post("https://api.feedbin.me/v2/starred_entries.json", 
+      body: { 'starred_entries' => id }.to_json, 
+      headers: { 'Content-Type' => 'application/json' },
+      basic_auth: { username: @email, password: @password })
+  end
+
+  def unstar(id)
+    HTTParty.post("https://api.feedbin.me/v2/starred_entries/delete.json", 
+      body: { 'starred_entries' => id }.to_json, 
+      headers: { 'Content-Type' => 'application/json' },
+      basic_auth: { username: @email, password: @password })
+  end
+
   def mark_as_read(id)
-  HTTParty.post("https://api.feedbin.me/v2/unread_entries/delete.json", 
-    body: { 'unread_entries' => id }.to_json, 
-    headers: { 'Content-Type' => 'application/json' },
-    basic_auth: { username: @email, password: @password })
+    HTTParty.post("https://api.feedbin.me/v2/unread_entries/delete.json", 
+      body: { 'unread_entries' => id }.to_json, 
+      headers: { 'Content-Type' => 'application/json' },
+      basic_auth: { username: @email, password: @password })
   end
 
   def mark_as_unread(id)
-  HTTParty.post("https://api.feedbin.me/v2/unread_entries.json", 
-    body: { 'unread_entries' => id }.to_json, 
-    headers: { 'Content-Type' => 'application/json' },
-    basic_auth: { username: @email, password: @password })
+    HTTParty.post("https://api.feedbin.me/v2/unread_entries.json", 
+      body: { 'unread_entries' => id }.to_json, 
+      headers: { 'Content-Type' => 'application/json' },
+      basic_auth: { username: @email, password: @password })
   end
+
+  # Subscriptions
 
   def subscribe(url)
     HTTParty.post("https://api.feedbin.me/v2/subscriptions.json", 
