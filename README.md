@@ -27,6 +27,9 @@ Or install it yourself as:
     @feedbin.entries
     # => (array of entry hashes)
 
+    #feedbin.entries(read: false)
+    # => (an array of unread entries as hashes)
+
     @feedbin.unread_entries
     # => (array of unread entry IDs)
 

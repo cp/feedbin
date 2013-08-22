@@ -26,28 +26,34 @@ class FeedbinAPI
     HTTParty.post("https://api.feedbin.me/v2/starred_entries.json", 
       body: { 'starred_entries' => id }.to_json, 
       headers: { 'Content-Type' => 'application/json' },
-      basic_auth: { username: @email, password: @password })
+      basic_auth: { username: @email, password: @password }).code
   end
 
   def unstar(id)
     HTTParty.post("https://api.feedbin.me/v2/starred_entries/delete.json", 
       body: { 'starred_entries' => id }.to_json, 
       headers: { 'Content-Type' => 'application/json' },
-      basic_auth: { username: @email, password: @password })
+      basic_auth: { username: @email, password: @password }).code
   end
 
   def mark_as_read(id)
     HTTParty.post("https://api.feedbin.me/v2/unread_entries/delete.json", 
       body: { 'unread_entries' => id }.to_json, 
       headers: { 'Content-Type' => 'application/json' },
-      basic_auth: { username: @email, password: @password })
+      basic_auth: { username: @email, password: @password }).code
   end
 
   def mark_as_unread(id)
     HTTParty.post("https://api.feedbin.me/v2/unread_entries.json", 
       body: { 'unread_entries' => id }.to_json, 
       headers: { 'Content-Type' => 'application/json' },
-      basic_auth: { username: @email, password: @password })
+      basic_auth: { username: @email, password: @password }).code
+  end
+
+  # Feeds
+
+  def feed(id)
+    HTTParty.get("https://api.feedbin.me/v2/feeds/#{id}.json", basic_auth: { username: @email, password: @password })
   end
 
   # Subscriptions
@@ -56,7 +62,11 @@ class FeedbinAPI
     HTTParty.post("https://api.feedbin.me/v2/subscriptions.json", 
       body: { 'feed_url' => url }.to_json, 
       headers: { 'Content-Type' => 'application/json' },
-      basic_auth: { username: @email, password: @password })
+      basic_auth: { username: @email, password: @password }).code
+  end
+
+  def unsubscribe(id)
+    HTTParty.delete("https://api.feedbin.me/v2/subscriptions/#{id}.json", basic_auth: { username: @email, password: @password }).code
   end
 
   def subscriptions(options = {})
