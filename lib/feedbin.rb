@@ -41,7 +41,12 @@ class FeedbinAPI
       basic_auth: { username: @email, password: @password })
   end
 
-  def subscriptions
-    HTTParty.get("https://api.feedbin.me/v2/subscriptions.json", basic_auth: { username: @email, password: @password })
+  def subscriptions(options = {})
+    if options[:since]
+      resp = HTTParty.get("https://api.feedbin.me/v2/subscriptions.json", query: { since: options[:since] }, basic_auth: { username: @email, password: @password })
+      return resp == [] ? resp : 'There have been no subscriptions since this date.'.to_json unless resp.code != 200
+    else
+      HTTParty.get("https://api.feedbin.me/v2/subscriptions.json", basic_auth: { username: @email, password: @password })
+    end
   end
 end
