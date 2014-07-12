@@ -18,6 +18,13 @@ describe FeedbinAPI do
     end
   end
 
+  describe '#entries_for_feed' do
+    it 'should get entries for a feed and return a 200' do
+      stub_request(:get, "https://email:password@api.feedbin.me/v2/feeds/42/entries.json").to_return(status: 200)
+      expect(@feedbin.entries_for_feed(42).code).to eq(200)
+    end
+  end
+
   describe '#subscriptions' do
     it 'should get subscriptions and return a 200' do
       stub_request(:get, "https://email:password@api.feedbin.me/v2/subscriptions.json").to_return(status: 200)
