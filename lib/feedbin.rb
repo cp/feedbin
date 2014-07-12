@@ -4,6 +4,7 @@ require 'json'
 
 class FeedbinAPI
   attr_accessor :email, :password
+
   def initialize(email, password)
     @email, @password = email, password
   end
@@ -23,29 +24,29 @@ class FeedbinAPI
   end
 
   def star(id)
-    HTTParty.post("https://api.feedbin.me/v2/starred_entries.json", 
-      body: { 'starred_entries' => id }.to_json, 
+    HTTParty.post("https://api.feedbin.me/v2/starred_entries.json",
+      body: { 'starred_entries' => id }.to_json,
       headers: { 'Content-Type' => 'application/json' },
       basic_auth: { username: @email, password: @password }).code
   end
 
   def unstar(id)
-    HTTParty.post("https://api.feedbin.me/v2/starred_entries/delete.json", 
-      body: { 'starred_entries' => id }.to_json, 
+    HTTParty.post("https://api.feedbin.me/v2/starred_entries/delete.json",
+      body: { 'starred_entries' => id }.to_json,
       headers: { 'Content-Type' => 'application/json' },
       basic_auth: { username: @email, password: @password }).code
   end
 
   def mark_as_read(id)
-    HTTParty.post("https://api.feedbin.me/v2/unread_entries/delete.json", 
-      body: { 'unread_entries' => id }.to_json, 
+    HTTParty.post("https://api.feedbin.me/v2/unread_entries/delete.json",
+      body: { 'unread_entries' => id }.to_json,
       headers: { 'Content-Type' => 'application/json' },
       basic_auth: { username: @email, password: @password }).code
   end
 
   def mark_as_unread(id)
-    HTTParty.post("https://api.feedbin.me/v2/unread_entries.json", 
-      body: { 'unread_entries' => id }.to_json, 
+    HTTParty.post("https://api.feedbin.me/v2/unread_entries.json",
+      body: { 'unread_entries' => id }.to_json,
       headers: { 'Content-Type' => 'application/json' },
       basic_auth: { username: @email, password: @password }).code
   end
@@ -59,8 +60,8 @@ class FeedbinAPI
   # Subscriptions
 
   def subscribe(url)
-    HTTParty.post("https://api.feedbin.me/v2/subscriptions.json", 
-      body: { 'feed_url' => url }.to_json, 
+    HTTParty.post("https://api.feedbin.me/v2/subscriptions.json",
+      body: { 'feed_url' => url }.to_json,
       headers: { 'Content-Type' => 'application/json' },
       basic_auth: { username: @email, password: @password }).code
   end
