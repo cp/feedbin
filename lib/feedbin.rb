@@ -15,8 +15,12 @@ class FeedbinAPI
     HTTParty.get("https://api.feedbin.com/v2/entries.json", query: options, basic_auth: basic_auth)
   end
 
-  def entries_for_feed(id)
-    HTTParty.get("https://api.feedbin.com/v2/feeds/#{id}/entries.json", basic_auth: basic_auth)
+  def entries_for_feed(id, options = {})
+    HTTParty.get(
+      "https://api.feedbin.com/v2/feeds/#{id}/entries.json",
+      query:options,
+      basic_auth: basic_auth
+    )
   end
 
   def entry(id)
