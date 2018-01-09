@@ -28,6 +28,22 @@ describe FeedbinAPI do
     end
   end
 
+  describe '#tag' do
+    it 'should get subscriptions and return a 200' do
+      stub_request(:get, "https://api.feedbin.com/v2/taggings/42.json")
+        .with(basic_auth: ['email', 'password']).to_return(status: 200)
+      expect(@feedbin.tag(42).code).to eq(200)
+    end
+  end
+
+  describe '#tags' do
+    it 'should get subscriptions and return a 200' do
+      stub_request(:get, "https://api.feedbin.com/v2/taggings.json")
+        .with(basic_auth: ['email', 'password']).to_return(status: 200)
+      expect(@feedbin.tags.code).to eq(200)
+    end
+  end
+
   describe '#subscriptions' do
     it 'should get subscriptions and return a 200' do
       stub_request(:get, "https://api.feedbin.com/v2/subscriptions.json")
