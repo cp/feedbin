@@ -67,11 +67,15 @@ class FeedbinAPI
 
   # Tags
 
-  def tag(id)
+  def tags
+    HTTParty.get("https://api.feedbin.com/v2/tags.json", basic_auth: basic_auth)
+  end
+
+  def tagging(id)
     HTTParty.get("https://api.feedbin.com/v2/taggings/#{id}.json", basic_auth: basic_auth)
   end
 
-  def tags
+  def taggings
     HTTParty.get('https://api.feedbin.com/v2/taggings.json', basic_auth: basic_auth)
   end
 
